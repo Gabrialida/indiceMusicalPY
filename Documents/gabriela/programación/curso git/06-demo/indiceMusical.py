@@ -1,0 +1,95 @@
+from ast import Break
+import string
+
+
+Artistas = [["Norah Jones", "Don't Know Why"],["Norah Jones", "Come Away with Me "],["Norah Jones", "I loved you"]],
+
+#Lista de Letras
+
+Letras = [["I waited till I saw the sun I don't know why I didn't come  I left you by the house of fun  I don't know why I didn't come  I don't know why I didn't come  When I saw the break of day  I wished that I could fly away"],["Instead of kneeling in the sand  Catching teardrops in my hand  My heart is drenched in wine  But your be on my mind  Forever"]],
+
+
+#elegir canciones
+
+def elecciones():
+  eleccion = 1
+  while eleccion != 0:
+    try: 
+        eleccion = int(input("Ingresa la opción deseada: ? \n 1- Ver la lista de canciones? \n 2- Ver la letra de las canciones? \n 3- Agregar una cancion: \n 4- Eliminar una cancion?\n 5- Volver a hacer las preguntas \n 6-Buscar por nombre \n 0-Terminar \n : "))
+    
+        if eleccion == 1:
+          elegirCancion()
+        if eleccion == 2:
+          seleccionarletra()
+        if eleccion == 3:
+          agregarcancion()
+        if eleccion == 4:
+          borrarcancion()
+        if eleccion == 5:
+          elecciones()
+        if eleccion == 6:
+          buscarnombre()  
+              
+    except:
+      print()
+      print("Error \n elegir una opción:")
+      eleccion = int(input("1- ¿Nueva elección? \n 2- Cerrar el  programa \n:"))
+      if eleccion == 1:
+        elecciones()
+      if eleccion == 2:
+        print("-----------------Fin-------------------")
+              
+#Lista de canciones
+
+def elegirCancion():
+    print("¿Qué canción querés elegir?\n")
+    for i in Artistas:
+        print(Artistas.index(i)+1, "-" , i[0], ", " , i[1] )
+    elecciones() 
+
+#Funcion para seleccionar la letra de la cancion
+
+def seleccionarletra():
+    letra = int(input("que letra querés leer?: "))
+    print(Letras[letra-1])
+
+#Función para agregar canción
+
+def agregarcancion():
+    eleccion = input("Agregar nombre de la banda y cancion: ")
+    eleccion2 = ingresarletra()
+    Artistas.append(eleccion)
+    print("Cancion Agregada")
+    elecciones()
+    
+#Función para borrar
+    
+def borrarcancion():
+    eleccion = int(input("¿Que canción deseas eliminar?: "))
+    del Artistas[eleccion - 1]
+    print("\nCanción eliminada\n")
+    elecciones()
+
+#buscar por Nombre
+
+def buscarnombre():
+    eleccion = (input("Cual queres buscar?: "))
+    for i in Artistas:
+      if eleccion in i:
+        print("es la opcion numero:", i)
+      else:
+        print("no se encontro")
+
+#Funcion para ingresar letra
+
+def ingresarletra():
+    eleccion = ""
+    print("Ingrese la letra de la canción. Para nuevo renglón enter y la letra f para terminar")
+    letra = input()
+    while eleccion != "f" and eleccion != "F":
+        eleccion = eleccion + "\n" + letra
+        eleccion = input("Ingrese nueva línea, f para terminar\n")
+        Letras.append(letra)
+    return eleccion
+
+elecciones()
