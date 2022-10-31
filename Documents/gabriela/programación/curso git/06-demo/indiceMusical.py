@@ -1,5 +1,6 @@
 from ast import Break
 import string
+import traceback
 
 
 Artistas = [["Norah Jones", "Don't Know Why"],["Norah Jones", "Come Away with Me "],["Norah Jones", "I loved you"]],
@@ -15,7 +16,7 @@ def elecciones():
   eleccion = 1
   while eleccion != 0:
     try: 
-        eleccion = int(input("Ingresa la opción deseada: ? \n 1- Ver la lista de canciones? \n 2- Ver la letra de las canciones? \n 3- Agregar una cancion: \n 4- Eliminar una cancion?\n 5- Volver a hacer las preguntas \n 6-Buscar por nombre \n 0-Terminar \n : "))
+        eleccion = int(input("Ingresa la opción deseada: ? \n 1- Ver la lista de canciones? \n 2- Ver la letra de las canciones? \n 3- Agregar canción: \n 4- Borrar  canción?\n 5- Volver a preguntar \n 6-Buscar por lista \n 0-Finalizar \n : "))
     
         if eleccion == 1:
           elegirCancion()
@@ -31,9 +32,9 @@ def elecciones():
           buscarnombre()  
               
     except:
-      print()
-      print("Error \n elegir una opción:")
-      eleccion = int(input("1- ¿Nueva elección? \n 2- Cerrar el  programa \n:"))
+      traceback.print_exc()
+      print("Error elegir una opción:")
+      eleccion = int(input("1- ¿Nueva canción? \n 2- Cerrar el programa \n:"))
       if eleccion == 1:
         elecciones()
       if eleccion == 2:
@@ -73,22 +74,22 @@ def borrarcancion():
 #buscar por Nombre
 
 def buscarnombre():
-    eleccion = (input("Cual queres buscar?: "))
+    eleccion = (input("Cuál queres buscar?: "))
     for i in Artistas:
       if eleccion in i:
-        print("es la opcion numero:", i)
+        print("es la opcion número:", i)
       else:
-        print("no se encontro")
+        print("no se encuentra")
 
 #Funcion para ingresar letra
 
 def ingresarletra():
     eleccion = ""
-    print("Ingrese la letra de la canción. Para nuevo renglón enter y la letra f para terminar")
+    print("Ingresa la letra de la canción, s para terminar")
     letra = input()
-    while eleccion != "f" and eleccion != "F":
+    while eleccion != "s" and eleccion != "S":
         eleccion = eleccion + "\n" + letra
-        eleccion = input("Ingrese nueva línea, f para terminar\n")
+        eleccion = input("Ingrese nueva línea, s para terminar\n")
         Letras.append(letra)
     return eleccion
 
