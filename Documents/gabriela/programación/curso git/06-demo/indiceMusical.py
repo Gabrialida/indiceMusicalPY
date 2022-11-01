@@ -1,14 +1,11 @@
-from ast import Break
 import string
 import traceback
-
 
 Artistas = [["Norah Jones", "Don't Know Why"],["Norah Jones", "Come Away with Me "],["Norah Jones", "I loved you"]],
 
 #Lista de Letras
 
 Letras = [["I waited till I saw the sun I don't know why I didn't come  I left you by the house of fun  I don't know why I didn't come  I don't know why I didn't come  When I saw the break of day  I wished that I could fly away"],["Instead of kneeling in the sand  Catching teardrops in my hand  My heart is drenched in wine  But your be on my mind  Forever"]],
-
 
 #elegir canciones
 
@@ -84,8 +81,8 @@ def buscarnombre():
 #Funcion para ingresar letra
 
 def ingresarletra():
-    eleccion = ""
-    print("Ingresa la letra de la canción, s para terminar")
+    eleccion = " "
+    print("Ingresa la letra de la canción deseada, s para terminar")
     letra = input()
     while eleccion != "s" and eleccion != "S":
         eleccion = eleccion + "\n" + letra
